@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-detail',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './detail.css'
 })
 export class Detail {
-
+  @Input() id?: number;
+  
+  ngOnInit(): void {
+    console.log("id => ", this.id);
+  }
 }
