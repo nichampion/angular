@@ -22,6 +22,19 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": {
+            "translation": "src/locale/messages.fr.xlf",
+            "baseHref": "fr"
+          },
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "en"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -36,6 +49,9 @@
             ],
             "styles": [
               "src/styles.css"
+            ],
+            "polyfills": [
+              "@angular/localize/init"
             ]
           },
           "configurations": {
@@ -58,6 +74,11 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "fr": {
+              "localize": [
+                "fr"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -70,6 +91,9 @@
             },
             "development": {
               "buildTarget": "tp:build:development"
+            },
+            "fr": {
+                "buildTarget": ":build:development,fr"
             }
           },
           "defaultConfiguration": "development"

@@ -24,6 +24,7 @@
   },
   "private": true,
   "dependencies": {
+    "lib": "file:dist/lib",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
@@ -37,6 +38,7 @@
     "@angular/build": "^20.3.4",
     "@angular/cli": "^20.3.4",
     "@angular/compiler-cli": "^20.3.0",
+    "@angular/localize": "20.3.3",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.9.0",
     "jsdom": "^27.0.0",
