@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Liste } from './components/liste/liste';
 import { Detail } from './components/detail/detail';
 import { Auteur } from './components/auteur/auteur';
-import { RouterModule } from '@angular/router';
+import { PostRoutingModule } from './post-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    PostRoutingModule
   ]
 })
 export class PostModule { }

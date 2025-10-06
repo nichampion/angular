@@ -1,19 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Dashboard } from './components/dashboard/dashboard';
-import { Liste } from './post/components/liste/liste';
-import { Detail } from './post/components/detail/detail';
-import { Auteur } from './post/components/auteur/auteur';
 
 const routes: Routes = [
   { path: '', component: Dashboard },
   { path: 'dashboard', component: Dashboard },
-  { path: 'posts', component: Liste },
-  { path: 'posts/:id', component: Detail },
-  { path: 'author/:id', component: Auteur },
+  { path: '', loadChildren: () => import('./post/post-module').then(m => m.PostModule) }
 ];
-
-// TODO ajouetr la route dans le module post
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
