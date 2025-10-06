@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
@@ -10,13 +10,12 @@ import { PostService } from '../../../services/post.service';
   styleUrl: './liste.css'
 })
 export class Liste implements OnInit {
+  @Input() idPostCourant?: number;
   protected posts$!: Observable<Post[]>;
+  
   constructor(private readonly postService: PostService) {}
 
   ngOnInit(): void {
     this.posts$ = this.postService.getPosts();
-    console.log(this.posts$.subscribe(posts => {
-      console.log(posts);
-    }));
   }
 }
