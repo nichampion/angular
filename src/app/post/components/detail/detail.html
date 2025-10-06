@@ -1,0 +1,17 @@
+<div class="post-detail" *ngIf="post$ | async as post">
+    <h1>{{ post.title }}</h1>
+    
+    <div class="post-image" *ngIf="post.photo">
+        <img [src]="post.photo" [alt]="post.title">
+    </div>
+
+    <div class="post-content">
+        <p>{{ post.content }}</p>
+    </div>
+
+    <div class="post-author" *ngIf="author$ | async as author">
+        <p>{{ author.name }}</p>
+        <img [src]="author.photo">
+        <a [routerLink]="['/author', author.id]">Aller à l'auteur</a>
+    </div>
+</div>

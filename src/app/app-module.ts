@@ -7,6 +7,7 @@ import { Lib } from 'lib';
 import { Dashboard } from './components/dashboard/dashboard';
 import { Header } from './components/header/header';
 import { HttpClientModule } from '@angular/common/http';
+import { PostModule } from './post/post-module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     Lib,
-    HttpClientModule
+    HttpClientModule,
+    PostModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

@@ -1,1 +1,20 @@
-<p>auteur works!</p>
+<div class="author-card" *ngIf="author$ | async as author">
+    <div class="author-header">
+        <img [src]="author.photo" [alt]="author.name" class="author-photo">
+        <h2>{{ author.name }}</h2>
+    </div>
+    
+    <div class="author-details">
+        <p><strong>Pseudos:</strong></p>
+        <ul>
+            <li *ngFor="let pseudo of author.pseudo">{{ pseudo }}</li>
+        </ul>
+        
+        <div class="author-address">
+            <h3>Adresse:</h3>
+            <p>{{ author.address.number }} {{ author.address.street }}</p>
+            <p>{{ author.address.postalCode }} {{ author.address.city }}</p>
+            <p>{{ author.address.country }}</p>
+        </div>
+    </div>
+</div>
