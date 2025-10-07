@@ -1,0 +1,28 @@
+<form [formGroup]="authorAddressForm" class="address-form">
+    <div class="form-group">
+        <label for="number">Number :</label>
+        <app-reset-input [formControl]="authorAddressForm.controls.number" placeholder="Numéro"></app-reset-input>
+    </div>
+
+    <div class="form-group">
+        <label for="street">Street :</label>
+        <app-reset-input [formControl]="authorAddressForm.controls.street" placeholder="Rue"></app-reset-input>
+    </div>
+
+    <div class="form-group">
+        <label for="postalCode">Postal Code :</label>
+        <app-reset-input [formControl]="authorAddressForm.controls.postalCode" placeholder="Code postal"></app-reset-input>
+    </div>
+
+    <div class="form-group">
+        <label for="city">City :</label>
+        <app-reset-input [formControl]="authorAddressForm.controls.city" placeholder="Ville"></app-reset-input>
+    </div>
+
+    <div class="form-group">
+        <label for="country">Country :</label>
+        <app-reset-input [formControl]="authorAddressForm.controls.country" placeholder="Pays"></app-reset-input>
+    </div>
+
+    <button type="submit">Save</button>
+</form>

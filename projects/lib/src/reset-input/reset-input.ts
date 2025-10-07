@@ -46,21 +46,16 @@ export class ResetInput implements ControlValueAccessor {
   onTouched: any = () => { };
 
   writeValue(value: string): void {
-    console.log('writeValue', value);
     this._value = value;
   }
 
   registerOnChange(fn: any): void {
-    console.log('registerOnChange');
     this.onChange = fn;
   }
 
   registerOnTouched(fn: any): void {
-    console.log('registerOnTouched');
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    console.log('setDisabledState', isDisabled);
-  }
+  setDisabledState(isDisabled: boolean): void {}
 }
