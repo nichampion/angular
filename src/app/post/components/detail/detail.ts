@@ -7,13 +7,14 @@ import { Author } from '../../../models/Author';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Liste } from '../liste/liste';
+import { UpdatePost } from '../update-post/update-post';
 
 @Component({
     selector: 'app-detail',
     templateUrl: './detail.html',
     styleUrl: './detail.css',
     standalone: true,
-    imports: [RouterLink, Liste, AsyncPipe]
+    imports: [RouterLink, Liste, AsyncPipe, UpdatePost]
 })
 export class Detail implements OnInit {
   protected post$!: Observable<Post>;

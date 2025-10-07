@@ -1,0 +1,7 @@
+:host {
+    display: block;
+    background-color: rgba(128, 128, 128, 0.2); /* Gris avec 20% d'opacité */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+}

@@ -1,0 +1,19 @@
+<form [formGroup]="form">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <app-reset-input [formControl]="form.controls.title" placeholder="Title"></app-reset-input>
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <app-reset-input [formControl]="form.controls.content" placeholder="Content"></app-reset-input>
+    </div>
+    <div class="form-group">
+        <label for="author">Author</label>
+        <app-reset-input [formControl]="form.controls.author" placeholder="Author"></app-reset-input>
+    </div>
+    <div class="form-group">
+        <label for="photo">Photo</label>
+        <app-reset-input [formControl]="form.controls.photo" placeholder="Photo"></app-reset-input>
+    </div>
+    <button type="submit">Save</button>
+</form>

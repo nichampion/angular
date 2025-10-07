@@ -16,7 +16,9 @@
         <a [routerLink]="['/author', author.id]">Aller à l'auteur</a>
       </div>
     }
+    <button [routerLink]="['/posts', post.id, 'edit']">Modifier le post</button>
   </div>
+  <app-update-post [post]="post"></app-update-post>
 }
 
 <app-liste [idPostCourant]="id" />
