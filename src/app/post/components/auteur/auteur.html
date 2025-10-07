@@ -1,20 +1,29 @@
-<div class="author-card" *ngIf="author$ | async as author">
-    <div class="author-header">
-        <img [src]="author.photo" [alt]="author.name" class="author-photo">
-        <h2>{{ author.name }}</h2>
+@defer (on viewport) {
+@if (author$ | async; as author) {
+<div class="author-card">
+  <div class="author-header">
+    <img [src]="author.photo" [alt]="author.name" class="author-photo">
+    <h2>{{ author.name }}</h2>
+  </div>
+  <div class="author-details">
+    <p><strong>Pseudos:</strong></p>
+    <ul>
+      @for (pseudo of author.pseudo; track pseudo) {
+      <li>{{ pseudo }}</li>
+      }
+    </ul>
+    <div class="author-address">
+      <h3>Adresse:</h3>
+      <p>{{ author.address.number }} {{ author.address.street }}</p>
+      <p>{{ author.address.postalCode }} {{ author.address.city }}</p>
+      <p>{{ author.address.country }}</p>
     </div>
-    
-    <div class="author-details">
-        <p><strong>Pseudos:</strong></p>
-        <ul>
-            <li *ngFor="let pseudo of author.pseudo">{{ pseudo }}</li>
-        </ul>
-        
-        <div class="author-address">
-            <h3>Adresse:</h3>
-            <p>{{ author.address.number }} {{ author.address.street }}</p>
-            <p>{{ author.address.postalCode }} {{ author.address.city }}</p>
-            <p>{{ author.address.country }}</p>
-        </div>
-    </div>
+  </div>
 </div>
+}
+}
+@placeholder (minimum 2s) {
+<div class="author-card">
+  <h2>Chargement de l'auteur...</h2>
+</div>
+}

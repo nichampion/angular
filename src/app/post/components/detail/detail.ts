@@ -4,7 +4,7 @@ import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
 import { AuthorService } from '../../../services/author.service';
 import { Author } from '../../../models/Author';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Liste } from '../liste/liste';
 
@@ -13,7 +13,7 @@ import { Liste } from '../liste/liste';
     templateUrl: './detail.html',
     styleUrl: './detail.css',
     standalone: true,
-    imports: [NgIf, RouterLink, Liste, AsyncPipe]
+    imports: [RouterLink, Liste, AsyncPipe]
 })
 export class Detail implements OnInit {
   protected post$!: Observable<Post>;

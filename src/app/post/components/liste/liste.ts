@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
-import { NgFor, NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
     templateUrl: './liste.html',
     styleUrl: './liste.css',
     standalone: true,
-    imports: [NgFor, NgIf, RouterLink, AsyncPipe]
+    imports: [RouterLink, AsyncPipe]
 })
 export class Liste implements OnInit {
   @Input() idPostCourant?: number;

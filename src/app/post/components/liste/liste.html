@@ -1,5 +1,9 @@
 <h1>Liste des posts</h1>
-<div *ngFor="let post of posts$ | async">
+@for (post of posts$ | async; track post) {
+  <div>
     <p>{{post.title}}</p>
-    <a *ngIf="post.id !== idPostCourant" [routerLink]="['/posts', post.id]">Aller au post</a>
-</div>
+    @if (post.id !== idPostCourant) {
+      <a [routerLink]="['/posts', post.id]">Aller au post</a>
+    }
+  </div>
+}
