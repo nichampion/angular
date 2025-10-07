@@ -1,32 +1,43 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Observable, switchMap, map } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
 import { AuthorService } from '../../../services/author.service';
 import { Author } from '../../../models/Author';
 import { NgIf, AsyncPipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Liste } from '../liste/liste';
 
 @Component({
     selector: 'app-detail',
     templateUrl: './detail.html',
     styleUrl: './detail.css',
+    standalone: true,
     imports: [NgIf, RouterLink, Liste, AsyncPipe]
 })
-export class Detail implements OnChanges {
-  @Input() id?: number;
+export class Detail implements OnInit {
   protected post$!: Observable<Post>;
   protected author$!: Observable<Author>;
+  protected id!: number;
   
-  constructor(private readonly postService: PostService, private readonly authorService: AuthorService) { }
+  constructor(
+    private readonly postService: PostService,
+    private readonly authorService: AuthorService,
+    private readonly route: ActivatedRoute
+  ) { }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['id']) {
-      this.post$ = this.postService.getPostById(this.id!);
-      this.author$ = this.post$.pipe(
-        switchMap(post => this.authorService.getAuthorById(post.author))
-      );
-    }
+  ngOnInit(): void {
+    this.post$ = this.route.paramMap.pipe(
+      map(params => Number(params.get('id'))),
+      switchMap(id => {
+        this.id = id;
+        return this.postService.getPostById(id);
+      })
+    );
+
+    this.author$ = this.post$.pipe(
+      switchMap(post => this.authorService.getAuthorById(post.author))
+    );
   }
 }
+

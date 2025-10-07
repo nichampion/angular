@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
     selector: 'app-liste',
     templateUrl: './liste.html',
     styleUrl: './liste.css',
+    standalone: true,
     imports: [NgFor, NgIf, RouterLink, AsyncPipe]
 })
 export class Liste implements OnInit {
@@ -19,5 +20,13 @@ export class Liste implements OnInit {
 
   ngOnInit(): void {
     this.posts$ = this.postService.getPosts();
+    this.posts$.subscribe(
+      posts => {
+        console.log('Posts received:', posts);
+      },
+      error => {
+        console.error('Error fetching posts:', error);
+      }
+    );
   }
 }

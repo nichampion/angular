@@ -11,13 +11,21 @@ export class PostService {
   private readonly apiUrl = 'http://localhost:3000/posts';
 
   getPosts() {
-    return this.http.get<Post[]>(this.apiUrl);
+    console.log('Fetching posts from:', this.apiUrl);
+    return this.http.get<Post[]>(this.apiUrl).pipe(
+      map(posts => {
+        console.log('Posts received:', posts);
+        return posts;
+      })
+    );
   }
 
   getPostById(id: number) {
     // Temporary solution
     return this.getPosts().pipe(
-      map((posts: any[]) => posts.find((post: { id: number; }) => post.id === id))
+      map((posts: any[]) => {
+        return posts.find(post => Number(post.id) === Number(id));
+      })
     );
   }
 }
