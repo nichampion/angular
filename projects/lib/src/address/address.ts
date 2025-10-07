@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ResetInput } from '../reset-input/reset-input';
 
 @Component({
@@ -11,11 +11,14 @@ import { ResetInput } from '../reset-input/reset-input';
 })
 export class Address {
   authorAddressForm = new FormGroup({
-    number: new FormControl<string>(''),
+    number: new FormControl<string>('', [
+      Validators.required,
+      Validators.pattern(/^\d{2,}$/) // Au moins 2 chiffres
+    ]),
     street: new FormControl<string>(''),
     postalCode: new FormControl<string>(''),
     city: new FormControl<string>(''),
-    country: new FormControl<string>('')
+    country: new FormControl<string>('', [Validators.required])
   });
 
   constructor() {

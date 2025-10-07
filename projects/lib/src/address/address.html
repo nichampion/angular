@@ -24,5 +24,5 @@
         <app-reset-input [formControl]="authorAddressForm.controls.country" placeholder="Pays"></app-reset-input>
     </div>
 
-    <button type="submit">Save</button>
+    <button type="submit" [disabled]="authorAddressForm.invalid">Save</button>
 </form>
