@@ -1,16 +1,8 @@
 <div class="reset-input-container">
-  <input 
-    type="text" 
-    [value]="value"
-    [placeholder]="placeholder"
-    (input)="onInputChange($event)"
-  >
-  @if (value) {
-    <button 
-      class="reset-button" 
-      (click)="reset()" 
-    >
-      ❌
-    </button>
+  <input type="text" [value]="_value" [placeholder]="placeholder" (input)="setValue($event.target.value)">
+  @if (_value) {
+  <button class="reset-button" (click)="onReset()">
+    ❌
+  </button>
   }
 </div>

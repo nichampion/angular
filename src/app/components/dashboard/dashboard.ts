@@ -11,4 +11,10 @@ import { ResetInput } from "../../../../projects/lib/src/reset-input/reset-input
 })
 export class Dashboard {
     formControl = new FormControl('');
+
+    constructor() {
+        this.formControl.valueChanges.subscribe(value => {
+            console.log('Nouvelle marque de véhicule:', value);
+        });
+    }
 }

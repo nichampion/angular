@@ -17,31 +17,37 @@ import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/f
   ]
 })
 export class ResetInput implements ControlValueAccessor {
-  @Input() placeholder = '';
-  
-value: string = '';
+  @Input() placeholder: string = '';
+  _value: string = '';
 
-  onInputChange(event: any): void {
-    this.value = event.target.value;
+  setValue(val: string): void {
+    this._value = val;
 
     // MAJ cycle de vie du formulaire
-    this.onChange(this.value);
+    this.onChange(this._value);
     this.onTouched();
   }
 
-  reset(): void {
-    this.value = '';
-    this.onChange(this.value);
+  getValue(): string {
+    return this._value;
+  }
+
+  // RESET
+
+  onReset(): void {
+    this._value = '';
+    this.onChange(this._value);
     this.onTouched();
   }
 
   // ControlValueAccessor
 
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  onChange: any = () => { };
+  onTouched: any = () => { };
 
   writeValue(value: string): void {
-    this.value = value;
+    console.log('writeValue', value);
+    this._value = value;
   }
 
   registerOnChange(fn: any): void {
