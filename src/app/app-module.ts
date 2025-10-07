@@ -10,22 +10,20 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostModule } from './post/post-module';
 
 @NgModule({
-  declarations: [
-    App,
-    Dashboard,
-    Header
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    Lib,
-    HttpClientModule,
-    PostModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection()
-  ],
-  bootstrap: [App]
+    declarations: [App],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        Lib,
+        HttpClientModule,
+        PostModule,
+        Dashboard,
+        Header
+    ],
+    providers: [
+        provideBrowserGlobalErrorListeners(),
+        provideZonelessChangeDetection()
+    ],
+    bootstrap: [App]
 })
 export class AppModule { }

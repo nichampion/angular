@@ -2,12 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Author } from '../../../models/Author';
 import { AuthorService } from '../../../services/author.service';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-auteur',
-  standalone: false,
-  templateUrl: './auteur.html',
-  styleUrl: './auteur.css'
+    selector: 'app-auteur',
+    templateUrl: './auteur.html',
+    styleUrl: './auteur.css',
+    imports: [NgIf, NgFor, AsyncPipe]
 })
 export class Auteur implements OnInit {
   @Input() id?: number;

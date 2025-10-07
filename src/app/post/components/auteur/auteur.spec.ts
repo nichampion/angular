@@ -8,8 +8,8 @@ describe('Auteur', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Auteur]
-    })
+    imports: [Auteur]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(Auteur);

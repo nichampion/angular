@@ -4,12 +4,15 @@ import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
 import { AuthorService } from '../../../services/author.service';
 import { Author } from '../../../models/Author';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Liste } from '../liste/liste';
 
 @Component({
-  selector: 'app-detail',
-  standalone: false,
-  templateUrl: './detail.html',
-  styleUrl: './detail.css'
+    selector: 'app-detail',
+    templateUrl: './detail.html',
+    styleUrl: './detail.css',
+    imports: [NgIf, RouterLink, Liste, AsyncPipe]
 })
 export class Detail implements OnChanges {
   @Input() id?: number;

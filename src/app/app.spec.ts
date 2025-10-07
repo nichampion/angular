@@ -6,16 +6,14 @@ import { provideZonelessChangeDetection } from '@angular/core';
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
+    imports: [
         RouterModule.forRoot([])
-      ],
-      declarations: [
-        App
-      ],
-      providers: [
+    ],
+    declarations: [App],
+    providers: [
         provideZonelessChangeDetection()
-      ]
-    }).compileComponents();
+    ]
+}).compileComponents();
   });
 
   it('should create the app', () => {

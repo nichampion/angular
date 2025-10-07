@@ -6,14 +6,12 @@ import { Auteur } from './components/auteur/auteur';
 import { PostRoutingModule } from './post-routing.module';
 
 @NgModule({
-  declarations: [
-    Liste,
-    Detail,
-    Auteur
-  ],
-  imports: [
-    CommonModule,
-    PostRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        Liste,
+        Detail,
+        Auteur
+    ]
 })
 export class PostModule { }
