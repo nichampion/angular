@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, switchMap, map } from 'rxjs';
+import { Observable, switchMap, map, BehaviorSubject } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
 import { AuthorService } from '../../../services/author.service';
@@ -17,7 +17,8 @@ import { UpdatePost } from '../update-post/update-post';
     imports: [RouterLink, Liste, AsyncPipe, UpdatePost]
 })
 export class Detail implements OnInit {
-  protected post$!: Observable<Post>;
+  private postSubject = new BehaviorSubject<Post | null>(null);
+  protected post$ = this.postSubject.asObservable();
   protected author$!: Observable<Author>;
   protected id!: number;
   
@@ -28,17 +29,23 @@ export class Detail implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.post$ = this.route.paramMap.pipe(
+    this.route.paramMap.pipe(
       map(params => Number(params.get('id'))),
       switchMap(id => {
         this.id = id;
         return this.postService.getPostById(id);
       })
-    );
+    ).subscribe(post => {
+      this.postSubject.next(post);
+    });
 
     this.author$ = this.post$.pipe(
-      switchMap(post => this.authorService.getAuthorById(post.author))
+      switchMap(post => post ? this.authorService.getAuthorById(post.author) : [])
     );
+  }
+
+  onPostUpdated(updatedPost: Post) {
+    console.log('Post updated:', updatedPost);
   }
 }
 

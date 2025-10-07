@@ -18,7 +18,10 @@
     }
     <button [routerLink]="['/posts', post.id, 'edit']">Modifier le post</button>
   </div>
-  <app-update-post [post]="post"></app-update-post>
+  <app-update-post 
+    [post]="post" 
+    (postUpdated)="onPostUpdated($event)">
+  </app-update-post>
 }
 
 <app-liste [idPostCourant]="id" />
