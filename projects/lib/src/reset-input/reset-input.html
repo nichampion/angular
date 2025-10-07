@@ -1,5 +1,5 @@
 <div class="reset-input-container">
-  <input type="text" [value]="_value" [placeholder]="placeholder" (input)="setValue($event.target.value)">
+  <input type="text" [(ngModel)]="_value" [placeholder]="placeholder" (ngModelChange)="setValue($event)">
   @if (_value) {
   <button class="reset-button" (click)="onReset()">
     ❌
