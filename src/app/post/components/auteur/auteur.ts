@@ -5,10 +5,10 @@ import { AuthorService } from '../../../services/author.service';
 import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-auteur',
-    templateUrl: './auteur.html',
-    styleUrl: './auteur.css',
-    imports: [NgIf, NgFor, AsyncPipe]
+  selector: 'app-auteur',
+  templateUrl: './auteur.html',
+  styleUrl: './auteur.css',
+  imports: [NgIf, NgFor, AsyncPipe]
 })
 export class Auteur implements OnInit {
   @Input() id?: number;
