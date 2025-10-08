@@ -3,7 +3,8 @@
   <div>
     <p>{{post.title}}</p>
     @if (post.id !== idPostCourant) {
-      <a [routerLink]="['/posts', post.id]">Aller au post</a>
+      <button [routerLink]="['/posts', post.id]">Aller au post</button>
     }
+    <button (click)="onSelectPost(post)">Selectionner le post {{post.id}} (Auteur : {{post.author}})</button>
   </div>
 }

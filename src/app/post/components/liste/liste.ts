@@ -16,6 +16,8 @@ export class Liste implements OnInit {
   @Input() idPostCourant?: number;
   protected posts$!: Observable<Post[]>;
   
+  //protected selectedPost = signal<Post | null>(null);
+  
   constructor(private readonly postService: PostService) {}
 
   ngOnInit(): void {
@@ -28,5 +30,11 @@ export class Liste implements OnInit {
         console.error('Error fetching posts:', error);
       }
     );
+  }
+
+  protected onSelectPost(post: Post): void {
+    console.log('Selected post:', post.id);
+    console.log('Selected author:', post.author);
+    //this.selectedPost.set(post);
   }
 }
