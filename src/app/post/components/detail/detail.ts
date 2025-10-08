@@ -4,7 +4,7 @@ import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
 import { AuthorService } from '../../../services/author.service';
 import { Author } from '../../../models/Author';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Liste } from '../liste/liste';
 import { UpdatePost } from '../update-post/update-post';
@@ -15,7 +15,7 @@ import { TplCard } from '../../../components/tpl-card/tpl-card';
     templateUrl: './detail.html',
     styleUrl: './detail.css',
     standalone: true,
-    imports: [RouterLink, Liste, AsyncPipe, UpdatePost, TplCard]
+    imports: [RouterLink, Liste, AsyncPipe, UpdatePost, TplCard, NgOptimizedImage]
 })
 export class Detail implements OnInit {
   private postSubject = new BehaviorSubject<Post | null>(null);

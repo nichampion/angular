@@ -12,7 +12,7 @@
     @if (author$ | async; as author) {
       <app-tpl-card>
         <h2>{{ author.name }}</h2>
-        <img [src]="author.photo">
+        <img [ngSrc]="author.photo" width="400" height="400">
         <p>{{ author.address.country }} - {{ author.address.city }}</p>
       </app-tpl-card>
     }
