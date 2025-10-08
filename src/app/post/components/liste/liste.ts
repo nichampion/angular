@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
@@ -16,7 +16,8 @@ export class Liste implements OnInit {
   @Input() idPostCourant?: number;
   protected posts$!: Observable<Post[]>;
   
-  //protected selectedPost = signal<Post | null>(null);
+  protected selectedPostId = signal<number[]>([])
+  protected selectedAuthorId = signal<number[]>([]);
   
   constructor(private readonly postService: PostService) {}
 
@@ -33,8 +34,12 @@ export class Liste implements OnInit {
   }
 
   protected onSelectPost(post: Post): void {
-    console.log('Selected post:', post.id);
-    console.log('Selected author:', post.author);
-    //this.selectedPost.set(post);
+    // PostIds
+    this.selectedPostId.update(oldIds => [...new Set([...oldIds, post.id])]);
+    console.log('Selected post ids:', this.selectedPostId());
+
+    // AuthorIds
+    this.selectedAuthorId.update(oldIds => [...new Set([...oldIds, post.author])]);
+    console.log('Selected author ids:', this.selectedAuthorId());
   }
 }
