@@ -39,7 +39,9 @@ export class Liste implements OnInit {
     console.log('Selected post ids:', this.selectedPostId());
 
     // AuthorIds
-    this.selectedAuthorId.update(oldIds => [...new Set([...oldIds, post.author])]);
+    this.selectedAuthorId.update(oldIds => 
+      oldIds.includes(post.author) ? oldIds : [...oldIds, post.author]
+    );
     console.log('Selected author ids:', this.selectedAuthorId());
   }
 }
