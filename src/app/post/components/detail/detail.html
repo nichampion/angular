@@ -10,11 +10,11 @@
       <p>{{ post.content }}</p>
     </div>
     @if (author$ | async; as author) {
-      <div class="post-author">
-        <p>{{ author.name }}</p>
+      <app-tpl-card>
+        <h2>{{ author.name }}</h2>
         <img [src]="author.photo">
-        <a [routerLink]="['/author', author.id]">Aller à l'auteur</a>
-      </div>
+        <p>{{ author.address.country }} - {{ author.address.city }}</p>
+      </app-tpl-card>
     }
     <button [routerLink]="['/posts', post.id, 'edit']">Modifier le post</button>
   </div>
