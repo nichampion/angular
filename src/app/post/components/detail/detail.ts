@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Observable, switchMap, map, BehaviorSubject } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
@@ -9,25 +9,32 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Liste } from '../liste/liste';
 import { UpdatePost } from '../update-post/update-post';
 import { TplCard } from '../../../components/tpl-card/tpl-card';
+import { LoggerLevel } from '../../../models/LoggerLevel';
+import { Logger } from '../../../services/logger';
 
 @Component({
-    selector: 'app-detail',
-    templateUrl: './detail.html',
-    styleUrl: './detail.css',
-    standalone: true,
-    imports: [RouterLink, Liste, AsyncPipe, UpdatePost, TplCard, NgOptimizedImage]
+  selector: 'app-detail',
+  templateUrl: './detail.html',
+  styleUrl: './detail.css',
+  standalone: true,
+  imports: [RouterLink, Liste, AsyncPipe, UpdatePost, TplCard, NgOptimizedImage]
 })
 export class Detail implements OnInit {
   private postSubject = new BehaviorSubject<Post | null>(null);
   protected post$ = this.postSubject.asObservable();
   protected author$!: Observable<Author>;
   protected id!: number;
-  
+
   constructor(
     private readonly postService: PostService,
     private readonly authorService: AuthorService,
     private readonly route: ActivatedRoute
-  ) { }
+  ) {
+    inject(Logger).log(LoggerLevel.INFO, 'Info');
+    inject(Logger).log(LoggerLevel.WARN, 'Warn');
+    inject(Logger).log(LoggerLevel.ERROR, 'Error');
+    inject(Logger).log(LoggerLevel.DEBUG, 'Debug');
+  }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(

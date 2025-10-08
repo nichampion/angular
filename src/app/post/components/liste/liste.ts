@@ -1,9 +1,11 @@
-import { Component, effect, Input, OnInit, signal } from '@angular/core';
+import { Component, effect, inject, Input, OnInit, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../../models/Post';
 import { PostService } from '../../../services/post.service';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { LoggerLevel } from '../../../models/LoggerLevel';
+import { Logger } from '../../../services/logger';
 
 @Component({
   selector: 'app-liste',
@@ -27,6 +29,11 @@ export class Liste implements OnInit {
     effect(() => {
       console.log('AuthorIds changed:', this.selectedAuthorId());
     });
+
+    inject(Logger).log(LoggerLevel.INFO, 'Info');
+    inject(Logger).log(LoggerLevel.WARN, 'Warn');
+    inject(Logger).log(LoggerLevel.ERROR, 'Error');
+    inject(Logger).log(LoggerLevel.DEBUG, 'Debug');
   }
 
   ngOnInit(): void {
