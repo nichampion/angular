@@ -17,7 +17,8 @@ import { Logger } from '../../../services/logger';
   templateUrl: './detail.html',
   styleUrl: './detail.css',
   standalone: true,
-  imports: [RouterLink, Liste, AsyncPipe, UpdatePost, TplCard, NgOptimizedImage]
+  imports: [RouterLink, Liste, AsyncPipe, UpdatePost, TplCard, NgOptimizedImage],
+  providers: [Logger]
 })
 export class Detail implements OnInit {
   private postSubject = new BehaviorSubject<Post | null>(null);
@@ -30,10 +31,10 @@ export class Detail implements OnInit {
     private readonly authorService: AuthorService,
     private readonly route: ActivatedRoute
   ) {
-    inject(Logger).log(LoggerLevel.INFO, 'Info');
-    inject(Logger).log(LoggerLevel.WARN, 'Warn');
-    inject(Logger).log(LoggerLevel.ERROR, 'Error');
-    inject(Logger).log(LoggerLevel.DEBUG, 'Debug');
+    inject(Logger).log(LoggerLevel.INFO, 'Detail Info');
+    inject(Logger).log(LoggerLevel.WARN, 'Detail Warn');
+    inject(Logger).log(LoggerLevel.ERROR, 'Detail Error');
+    inject(Logger).log(LoggerLevel.DEBUG, 'Detail Debug');
   }
 
   ngOnInit(): void {

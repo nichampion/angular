@@ -12,7 +12,8 @@ import { Logger } from '../../../services/logger';
   templateUrl: './liste.html',
   styleUrl: './liste.css',
   standalone: true,
-  imports: [RouterLink, AsyncPipe]
+  imports: [RouterLink, AsyncPipe],
+  providers: [Logger]
 })
 export class Liste implements OnInit {
   @Input() idPostCourant?: number;
@@ -30,10 +31,10 @@ export class Liste implements OnInit {
       console.log('AuthorIds changed:', this.selectedAuthorId());
     });
 
-    inject(Logger).log(LoggerLevel.INFO, 'Info');
-    inject(Logger).log(LoggerLevel.WARN, 'Warn');
-    inject(Logger).log(LoggerLevel.ERROR, 'Error');
-    inject(Logger).log(LoggerLevel.DEBUG, 'Debug');
+    inject(Logger).log(LoggerLevel.INFO, 'Liste Info');
+    inject(Logger).log(LoggerLevel.WARN, 'Liste Warn');
+    inject(Logger).log(LoggerLevel.ERROR, 'Liste Error');
+    inject(Logger).log(LoggerLevel.DEBUG, 'Liste Debug');
   }
 
   ngOnInit(): void {

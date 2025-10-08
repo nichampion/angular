@@ -12,7 +12,8 @@ import { LoggerLevel } from '../../../models/LoggerLevel';
   templateUrl: './auteur.html',
   styleUrl: './auteur.css',
   standalone: true,
-  imports: [AsyncPipe]
+  imports: [AsyncPipe],
+  providers: [Logger]
 })
 export class Auteur implements OnInit {
   protected author$!: Observable<Author>;
@@ -21,10 +22,10 @@ export class Auteur implements OnInit {
     private readonly authorService: AuthorService,
     private readonly route: ActivatedRoute
   ) {
-    inject(Logger).log(LoggerLevel.INFO, 'Info');
-    inject(Logger).log(LoggerLevel.WARN, 'Warn');
-    inject(Logger).log(LoggerLevel.ERROR, 'Error');
-    inject(Logger).log(LoggerLevel.DEBUG, 'Debug');
+    inject(Logger).log(LoggerLevel.INFO, 'Auteur Info');
+    inject(Logger).log(LoggerLevel.WARN, 'Auteur Warn');
+    inject(Logger).log(LoggerLevel.ERROR, 'Auteur Error');
+    inject(Logger).log(LoggerLevel.DEBUG, 'Auteur Debug');
   }
 
   ngOnInit(): void {

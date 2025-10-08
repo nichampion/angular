@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LoggerLevel } from '../models/LoggerLevel';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class Logger {
   loggerLevel = LoggerLevel.INFO;
 
